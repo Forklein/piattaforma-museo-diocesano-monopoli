@@ -1,0 +1,8 @@
+# ---Dipendenze backend---
+fastapi>=0.117,<1.0          # Framework python per creare API REST
+uvicorn[standard]>=0.30      # Web server ASGI (Asynchronous Server Gateway Interface)
+sqlalchemy>=2.0,<3.0         # ORM: Object-Relational Mapper
+pyjwt>=2.7,<3.0              # token di autenticazione (JSON Web Token)
+email-validator>=2.0         # validazione degli indirizzi email
+psycopg[binary]>=3.1         # driver PostgreSQL (usato solo in produzione)
+tzdata>=2024.1               # Per il fuso orario
