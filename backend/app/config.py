@@ -13,15 +13,15 @@ def _database_url() -> str:
     return url
 
 
-CHIAVE_DI_SVILUPPO = "zSAOm2zxpq97xNLrlxJlSnErGFPOlZRUzgilcUjRh-E"
+DEV_SECRET_KEY = "zSAOm2zxpq97xNLrlxJlSnErGFPOlZRUzgilcUjRh-E"
 
 DATABASE_URL = _database_url()
 
 # Chiave usata per firmare i token di accesso JWT
-CHIAVE_SEGRETA = os.getenv("SECRET_KEY", CHIAVE_DI_SVILUPPO)
+SECRET_KEY = os.getenv("SECRET_KEY", DEV_SECRET_KEY)
 
 # Scadenza dei token JWT in minuti
-DURATA_TOKEN_MINUTI = int(os.getenv("TOKEN_MINUTI", "120"))
+TOKEN_EXPIRE_MINUTES = int(os.getenv("TOKEN_EXPIRE_MINUTES", "120"))
 
 # Regola del museo: le prenotazioni si chiudono 2 giorni prima dell'attività
 GIORNI_PREAVVISO = int(os.getenv("GIORNI_PREAVVISO", "2"))
@@ -33,5 +33,5 @@ SOGLIA_GRUPPO = 20
 MAX_BIGLIETTI = 40
 
 # Controllo per la SECRET_KEY
-if not DATABASE_URL.startswith("sqlite") and CHIAVE_SEGRETA == CHIAVE_DI_SVILUPPO:
+if not DATABASE_URL.startswith("sqlite") and SECRET_KEY == DEV_SECRET_KEY:
     raise RuntimeError("In produzione è obbligatorio impostare la variabile d'ambiente SECRET_KEY")
